@@ -1,0 +1,496 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm,booktabs,array}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+pdftitle={Hardin's trace-avoiding array recurrences and Barker's formulas: alternative proofs extending Riedel's and Howroyd's enumerations},
+pdfauthor={Haobo Ma; Wenlin Zhang},
+pdfsubject={Trace-avoiding binary arrays; CC BY 4.0}}
+\usepackage{fancyvrb}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\leanbase}{https://github.com/the-omega-institute/trureturing/blob/1a461fb83236b7d5f88b0ffd1bde5f7d1e3ff8b4/D5/S3/Combinatorics/TraceAvoidingArrays/}
+\title{Hardin's trace-avoiding array recurrences and Barker's formulas:\\
+alternative proofs extending Riedel's and Howroyd's enumerations}
+\author{Haobo Ma\\\small ChronoAI Pte Ltd, Singapore
+\and Wenlin Zhang\\\small National University of Singapore\\
+\small ChronoAI Pte Ltd, Singapore}
+\date{14 November 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give alternative proofs and extensions for R.\ H.\ Hardin's empirical recurrences in the formula fields of
+OEIS A185761 (revision 8), A185762--A185763 (revision 9), A185764
+(revision 10), and A185765--A185768 (revision 9), together with Colin
+Barker's formulas added on 22 February and 16 April 2018; the width-two
+case follows from Marko Riedel's 2016 word enumeration and Andrew
+Howroyd's 2025 array argument.
+These sequences count labeled binary arrays whose neighboring contiguous
+$2\times2$ blocks have different ordinary traces.
+A row-pair transfer construction reduces the assertions at widths two
+through nine to explicit finite integer identities; multiplying those
+identities by further transfer powers proves the recurrences at every
+length. It also gives rational generating functions at every fixed width
+and explains the transposition symmetry of the parent table A185769.
+\end{abstract}
+
+\section{The counts and the formulas}
+Hardin's entries~\cite{oeis2,oeis3,oeis4,oeis5,oeis6,oeis7,oeis8,oeis9} give empirical recurrences for
+trace-avoiding binary arrays, and Barker gives the corresponding generating
+functions. We establish these formulas by a transfer argument with exact
+finite certificates. The recurrence and generating-function expressions
+are those in the entries, rather than newly proposed formulas.
+The method is the usual finite-digraph transfer method
+\cite[Theorems 4.7.1--4.7.2]{stanley}; the specific continuation identities
+below establish the empirical formulas with their exact starting indices.
+Riedel's dated word-counting argument~\cite{riedel} already implies the
+width-two recurrence and generating function, and hence its closed form,
+through the explicit encoding below. Howroyd's later array-counting
+argument~\cite{howroyd} gives another antecedent for that case.
+The present uniform construction
+extends that enumeration to widths three through nine; the corresponding
+fixed-revision Lean statements for widths two through six are identified
+in Section~4.
+
+For integers $w\ge2$ and $n\ge1$, let $a_w(n)$ be the number of arrays
+$A=(A_{ij})$ with $n+1$ rows, $w$ columns, and entries in $\{0,1\}$, for which
+\[
+ t_{ij}=A_{ij}+A_{i+1,j+1}\qquad(0\le i<n,\quad 0\le j<w-1)
+\]
+satisfies $t_{ij}\ne t_{i,j+1}$ and $t_{ij}\ne t_{i+1,j}$ whenever both
+indices in the comparison exist. Thus $t_{ij}$ is the ordinary
+main-diagonal trace, not the sum of all four entries. Rows and columns are
+labeled, the boundary is not periodic, and no symmetry quotient is taken.
+Write
+\[
+ F_w(z)=\sum_{n\ge1}a_w(n)z^n.
+\]
+Its constant coefficient is zero by definition. This convention does not
+assign zero to the number $2^w$ of single-row arrays.
+
+\begin{theorem}\label{thm:main}
+For $2\le w\le6$, let $c_w=(c_{w,1},\ldots,c_{w,d_w})$ and $N_w$ be
+as follows:
+\begin{center}
+\begin{tabular}{crrrl}
+\toprule
+$w$&OEIS&$d_w$&$N_w$&$c_w$\\
+\midrule
+2&A185761&2&3&$(1,4)$\\
+3&A185762&3&4&$(1,6,1)$\\
+4&A185763&5&7&$(1,10,3,-5,1)$\\
+5&A185764&7&10&$(1,17,9,-22,-1,1,-6)$\\
+6&A185765&9&13&$(1,30,24,-95,-15,64,-116,16,16)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Then
+\begin{equation}\label{eq:rec}
+ a_w(n)=\sum_{j=1}^{d_w}c_{w,j}a_w(n-j)\qquad(n\ge N_w).
+\end{equation}
+If $D_w(z)=1-\sum_{j=1}^{d_w}c_{w,j}z^j$, then
+\begin{equation}\label{eq:gf}
+ F_w(z)=\frac{8zP_w(z)}{D_w(z)},
+\end{equation}
+where
+\begin{align*}
+P_2(z)={}&2+3z,\\
+P_3(z)={}&5+10z+z^2,\\
+P_4(z)={}&13+33z-16z^3+7z^4-z^5,\\
+P_5(z)={}&33+108z-43z^2-249z^3-69z^4+5z^5\\
+ &\hspace{12mm}+43z^6+81z^7+18z^8,\\
+P_6(z)={}&85+347z-483z^2-2718z^3-1375z^4+2104z^5\\
+ &\hspace{12mm}+6276z^6+4796z^7-7734z^8-2893z^9\\
+ &\hspace{12mm}+3400z^{10}-520z^{11}.
+\end{align*}
+The four functions $F_2,\ldots,F_5$ are Barker's formulas; the recurrence for
+$w=6$ is Hardin's empirical formula in A185765~\cite{oeis6}.
+\end{theorem}
+
+\begin{corollary}\label{cor:siblings}
+Hardin's remaining three empirical recurrences in this family,
+A185766--A185768~\cite{oeis7,oeis8,oeis9}, also hold. In the notation
+of~\eqref{eq:rec}, their coefficients and thresholds are
+\begin{align}
+c_7={}&(1,54,60,-400,-155,924,-1220,-76,1725,\notag\\
+ &\qquad -642,-412,-88,100,40), &N_7&=19,\notag\\
+c_8={}&(1,98,145,-1606,-1043,9813,-11042,-14222,67346,\notag\\
+ &\qquad -40216,-64047,36082,29210,8981,-23650,-12520,\notag\\
+ &\qquad 7365,448,-196), &N_8&=25,\label{eq:siblingcoeff}\\
+c_9={}&(1,179,341,-6316,-6138,92272,-87872,-479803,\notag\\
+ &\qquad 1815915,-852208,-6873004,8175787,6036792,\notag\\
+ &\qquad -5492010,-12389568,3504328,38808492,-4735254,\notag\\
+ &\qquad -36745560,-36433267,12744011,28480781,9986028,\notag\\
+ &\qquad -2174189,-3904760,-845298,-118044,-60864,-3296,-32),
+ &N_9&=37.\notag
+\end{align}
+Here $d_7=14$, $d_8=19$ and $d_9=30$.
+\end{corollary}
+\begin{proof}
+Use the same array/path bijection and propagation in
+Lemma~\ref{lem:paths} below, with the continuation identities and boundary
+indices in Lemma~\ref{lem:finite}. They give precisely the printed
+thresholds $n>18$, $n>24$, and $n>36$.
+\end{proof}
+
+\section{Transfer paths and a finite certificate}
+Let $R_w=\{0,1\}^w$. For rows $r,s\in R_w$ define the trace vector
+\[
+ \tau(r,s)_j=r_j+s_{j+1}\quad(0\le j<w-1).
+\]
+Let $S_w$ consist of the ordered pairs $(r,s)$ for which consecutive
+coordinates of $\tau(r,s)$ differ. Put an edge from $(r,s)$ to $(s,t)$
+precisely when $(s,t)\in S_w$ and
+\begin{equation}\label{eq:edge}
+ \tau(r,s)_j\ne\tau(s,t)_j\quad(0\le j<w-1).
+\end{equation}
+There is at most one such edge for each ordered pair of states. Let $T_w$
+be the adjacency matrix, with the source state indexing its row. The
+column vector $\one$ has one in every coordinate, and
+$q_k=T_w^k\one$ for $k\ge0$.
+
+\begin{lemma}\label{lem:paths}
+For $n\ge1$,
+\begin{equation}\label{eq:count}
+ a_w(n)=\one^{\mathsf T}T_w^{n-1}\one.
+\end{equation}
+If, for nonnegative $b$ and coefficients $c_1,\ldots,c_d$,
+\begin{equation}\label{eq:identity}
+ q_{b+d}=\sum_{j=1}^d c_jq_{b+d-j},
+\end{equation}
+then $a_w(n)=\sum_{j=1}^dc_ja_w(n-j)$ for every $n\ge b+d+1$.
+\end{lemma}
+\begin{proof}
+An array with successive rows $r_0,\ldots,r_n$ determines the path
+$(r_0,r_1),\ldots,(r_{n-1},r_n)$. Membership in $S_w$ imposes exactly the
+horizontal inequalities, and each edge imposes exactly the vertical
+inequalities. Conversely a path recovers every row uniquely, because
+successive states share their middle row. This is a bijection, including
+the case $n=1$ of a path with no edges, and proves~\eqref{eq:count}.
+
+For $n\ge b+d+1$, multiply~\eqref{eq:identity} on the left by
+$\one^{\mathsf T}T_w^{n-1-b-d}$. Every resulting exponent is nonnegative,
+and~\eqref{eq:count} gives the asserted recurrence.
+\end{proof}
+
+\begin{lemma}\label{lem:finite}
+For the coefficients of Theorem~\ref{thm:main} and
+Corollary~\ref{cor:siblings}, identity~\eqref{eq:identity}
+holds with the following shifts. In addition, the scalar recurrence holds
+at each of the indicated boundary indices.
+\begin{center}
+\begin{tabular}{rrrl}
+\toprule
+$w$&$b$&$b+d_w$&boundary indices\\
+\midrule
+2&1&3&3\\
+3&2&5&4,5\\
+4&3&8&7,8\\
+5&3&10&10\\
+6&5&14&13,14\\
+7&6&20&19,20\\
+8&7&26&25,26\\
+9&8&38&37,38\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{lemma}
+\begin{proof}
+This is a finite integer calculation. For each tuple
+$(w,c_w,b,N_w)$ in the tables above, the specification below
+enumerates every binary row, every admissible row pair, and every possible
+next row; it computes $q_0,\ldots,q_{b+d_w}$ and tests each coordinate of
+the identity. Finally it tests exactly the boundary scalar equalities
+listed in the table. It uses neither fitted coefficients nor a cutoff on
+reachable states. The accompanying \texttt{verify.py} additionally
+compares counts with direct enumeration of the cells of small arrays.
+
+\begin{Verbatim}[fontsize=\small]
+from itertools import product
+
+def check(width, coeff, shift, start):
+    rows = list(product((0,1), repeat=width))
+    trace = {(upper,lower): tuple(
+        upper[col] + lower[col+1] for col in range(width-1))
+        for upper in rows for lower in rows}
+    states = [pair for pair, values in trace.items()
+        if all(left != right
+               for left,right in zip(values,values[1:]))]
+    index = {pair: pos for pos,pair in enumerate(states)}
+    edges = [[index[middle,lower] for lower in rows
+        if (middle,lower) in index and all(left != right
+            for left,right in zip(trace[upper,middle],
+                                  trace[middle,lower]))]
+        for upper,middle in states]
+    degree = len(coeff)
+    vectors = [[1]*len(states)]
+    for exponent in range(shift+degree):
+        vectors.append([sum(vectors[-1][target]
+            for target in successors) for successors in edges])
+    assert all(vectors[-1][pos] == sum(
+        coeff[lag-1]*vectors[-1-lag][pos]
+        for lag in range(1,degree+1))
+        for pos in range(len(states)))
+    counts = [0] + [sum(vector) for vector in vectors]
+    for number in range(start,shift+degree+1):
+        assert counts[number] == sum(
+            coeff[lag-1]*counts[number-lag]
+            for lag in range(1,degree+1))
+\end{Verbatim}
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Lemmas~\ref{lem:paths} and~\ref{lem:finite} prove~\eqref{eq:rec}, including
+the boundary indices. It remains to identify the numerators in~\eqref{eq:gf}.
+For this purpose set $\widetilde a_w(0)=0$ and
+$\widetilde a_w(n)=a_w(n)$ for $n\ge1$. The coefficient of $z^m$ in
+$D_wF_w$ is
+\begin{equation}\label{eq:num}
+ \widetilde a_w(m)-\sum_{j=1}^{\min(d_w,m)}
+ c_{w,j}\widetilde a_w(m-j).
+\end{equation}
+It vanishes for $m\ge N_w$, by the recurrence. The values for $m<N_w$
+come from~\eqref{eq:count}; substitution in~\eqref{eq:num} gives the
+displayed $8zP_w$. For example, at width four the coefficients for
+$m=1,\ldots,6$ are $(104,264,0,-128,56,-8)$, so
+$P_4=13+33z-16z^3+7z^4-z^5$.
+The same exact coefficient calculation for all five widths is included
+in \texttt{verify.py}. Finally $D_w(0)=1$, so $D_w$ is invertible as a
+formal power series and~\eqref{eq:gf} follows.
+\end{proof}
+
+\section{The closed form and the parent table}
+\begin{corollary}\label{cor:closed}
+Put $s=\sqrt{17}$ and $r_\pm=(1\pm s)/2$. For every $n\ge1$,
+\begin{equation}\label{eq:closed}
+ a_2(n)=\frac{(13+3s)r_+^n+(-13+3s)r_-^n}{s}.
+\end{equation}
+This is Barker's closed form in A185761.
+\end{corollary}
+\begin{proof}
+Both roots satisfy $r_\pm^2=r_\pm+4$, so the right-hand side satisfies
+the width-two recurrence. It has values $16$ and $40$ at $n=1,2$,
+respectively. These are the coefficients of $F_2$ at $z,z^2$; induction
+using~\eqref{eq:rec} proves the formula. Its range begins at $n=1$;
+it is not a formula for the constant coefficient of $F_2$.
+\end{proof}
+
+To identify the earlier width-two result precisely, Riedel~\cite{riedel}
+counts words of length $n$ over $\{0,1,2,3\}$ avoiding
+$00,11,22,33,03,30$. If $b(n)$ is this count, including $b(0)=1$, he proves
+\[
+ H(z)=\sum_{n\ge0}b(n)z^n=\frac{1+3z+2z^2}{1-z-4z^2}.
+\]
+For an array of width two, encode each diagonal pair
+$(A_{i,0},A_{i+1,1})$, for $0\le i<n$, by
+$01\mapsto0$, $10\mapsto3$, $00\mapsto1$, and $11\mapsto2$.
+These pairs use disjoint cells. Equal successive traces are exactly the
+six forbidden word pairs: the trace-one class contributes
+$00,03,30,33$, and the trace-zero and trace-two classes contribute
+$11$ and $22$. The remaining two cells are independently free, so
+$a_2(n)=4b(n)$ for $n\ge1$. Consequently
+\[
+ F_2(z)=4\bigl(H(z)-1\bigr)=\frac{8z(2+3z)}{1-z-4z^2}.
+\]
+Thus Riedel's 23 December 2016 argument is a prior proof of the equivalent
+enumeration; the transfer calculation above gives a uniform alternative.
+
+A later antecedent is Howroyd's 9 January 2025 counting argument in
+A183774~\cite{howroyd}. Write $h(k)=\mathrm{A183774}(k)$: this is half
+the number of $(k+1)\times2$ binary arrays with no contiguous block
+containing exactly two ones. His bottom-row classification gives
+$h(k)=h(k-1)+4h(k-2)$, with $h(0)=2$ and $h(1)=5$.
+There is a direct connection to the present arrays. Let
+$p_i=(A_{i,0},A_{i+1,1})$, and let row $i$ of a new $n\times2$ array
+be $p_i$ for even $i$ and its bitwise complement for odd $i$.
+The block on rows $i,i+1$ then contains
+$2+(-1)^i(t_i-t_{i+1})$ ones. Its total differs from two precisely when
+the original adjacent traces differ. The construction is reversible
+apart from the two free corners, giving
+$a_2(n)=8h(n-1)$ for $n\ge1$. Thus Howroyd's recurrence also implies
+the width-two formulas; the explicit identification of the two array
+models is the deduction given here.
+
+There is also a small hand calculation for the width-two transfer matrix.
+Partition its sixteen states by $(q_1,q_2)$, whose possible values are
+$(2,4),(2,6),(4,10)$. These classes have sizes $4,8,4$ and quotient matrix
+\[
+ M=\begin{pmatrix}0&2&0\\1&0&1\\1&2&1\end{pmatrix}.
+\]
+The three continuation vectors are
+$M\one=(2,2,4)^{\mathsf T}$,
+$M^2\one=(4,6,10)^{\mathsf T}$, and
+$M^3\one=(12,14,26)^{\mathsf T}=M^2\one+4M\one$.
+Weighting by $(4,8,4)$ gives $16,40,104$ at $n=1,2,3$ and hence the
+same recurrence and closed form.
+
+\begin{corollary}\label{cor:parent}
+For the table $T(n,k)$ of A185769~\cite{oeistable},
+\[
+ T(n,k)=T(k,n)\quad(n,k\ge1),\qquad T(n,w-1)=a_w(n).
+\]
+Thus Theorem~\ref{thm:main} and Corollary~\ref{cor:siblings} determine
+the first eight columns and, by transposition, the first eight rows.
+For every fixed width $w\ge2$, $F_w$
+is rational.
+\end{corollary}
+\begin{proof}
+Transposition sends an $(n+1)\times(k+1)$ binary array to a
+$(k+1)\times(n+1)$ array. It preserves each block trace and exchanges
+horizontal and vertical adjacency, so it is a bijection of the counted
+sets. The column identity is their definition.
+For fixed $w$, the state set $S_w$ is finite, and~\eqref{eq:count} gives
+\[
+ F_w(z)=z\one^{\mathsf T}(I-zT_w)^{-1}\one.
+\]
+The inverse exists formally because the constant matrix is $I$; its
+adjugate expression has polynomial numerator and denominator with
+denominator constant term one. Therefore $F_w$ is rational.
+\end{proof}
+
+For widths seven through nine an explicit numerator follows without
+another recurrence calculation. Set $\widetilde a_w(0)=0$ and use the
+transfer formula for $a_w(1),\ldots,a_w(N_w-1)$. Then
+\[
+ F_w(z)=\frac{Q_w(z)}{1-\sum_{j=1}^{d_w}c_{w,j}z^j},\qquad
+ Q_w(z)=\sum_{m=1}^{N_w-1}\left(\widetilde a_w(m)-
+ \sum_{j=1}^{\min(d_w,m)}c_{w,j}\widetilde a_w(m-j)\right)z^m.
+\]
+Indeed, the coefficient calculation~\eqref{eq:num} applies unchanged,
+and all coefficients from degree $N_w$ onward vanish.
+The supporting integer certificates give these three polynomials in full.
+
+\begin{corollary}\label{cor:divisibility}
+Every $a_w(n)$, for $n\ge1$ and $w\ge2$, is divisible by eight.
+\end{corollary}
+\begin{proof}
+The upper-right and lower-left cells of the array occur in no trace:
+the former cannot be an upper-left or lower-right cell of a block,
+and neither can the latter. They are distinct and independently free.
+On the remaining cells simultaneous complementation sends every trace
+$t$ to $2-t$, preserving all inequalities. This is a fixed-point-free
+involution on the admissible assignments to those cells, since at least
+two cells remain and a binary value differs from its complement.
+The two free bits and this
+involution partition the arrays into classes of size eight.
+\end{proof}
+
+\section{Coverage and supporting sources}
+The following table distinguishes the assertions in the posing entries
+from consequences that those entries do not pose as conjectures.
+\begin{center}
+\begin{tabular}{p{0.24\linewidth}p{0.58\linewidth}}
+\toprule
+Source item&Coverage\\
+\midrule
+A185761, formula fields&Prior proofs cited: Riedel's equivalent word
+enumeration (2016), followed by Howroyd's related array argument (2025),
+imply the recurrence, Barker's generating function and closed form through
+the explicit encodings above; a uniform alternative proof is given here.\\
+A185762--A185764, formula fields&Proved: all three recurrences and
+Barker's three generating functions, with the stated starting indices.\\
+A185765, formula field&Proved: width-six recurrence for $n>12$. Its
+generating function is not posed there; it is proved here.\\
+A185766--A185768, formula fields&Proved: all three empirical recurrences,
+with thresholds $n>18$, $n>24$, and $n>36$, respectively.\\
+A185769, name and table&The first eight row/column recurrences follow
+above. Transposition symmetry, fixed-width rationality and divisibility
+by eight are not posed there; they are proved above. Specific low-order
+formulas at widths at least ten are not covered.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The written argument supplies the array/path bijection, propagation of
+the finite identities, generating-function deduction, closed form, and
+transposition corollary. The integer enumeration supplies the explicit
+continuation and boundary identities in Lemma~\ref{lem:finite}.
+The following pinned Lean declarations have corresponding statement scopes:
+\begin{itemize}
+\item \href{\leanbase HardinA185761Recurrence.lean}{\texttt{HardinA185761Recurrence.result}}:
+the literal width-two array count, its two initial values, recurrence,
+generating function, and real closed form.
+\item \href{\leanbase HardinA185762Recurrence.lean}{\texttt{HardinA185762Recurrence.result}}:
+the literal width-three count, its three initial values, recurrence, and
+generating function.
+\item \href{\leanbase HardinA185763Recurrence.lean}{\texttt{HardinA185763Recurrence.result}}:
+the literal width-four count, its six initial values, recurrence for
+$n\ge7$, and generating function.
+\item \href{\leanbase HardinA185764Recurrence.lean}{\texttt{HardinA185764Recurrence.result}}:
+the literal width-five count, its nine initial values, recurrence for
+$n\ge10$, and generating function.
+\item \href{\leanbase HardinA185765Recurrence.lean}{\texttt{HardinA185765Recurrence.result}}:
+the literal width-six count's recurrence for $n\ge13$, using
+\href{\leanbase HardinA185765Transfer.lean}{\texttt{HardinA185765Transfer}}.
+The displayed width-six generating function is a written consequence
+above.
+\end{itemize}
+All five result declarations are in namespace
+\texttt{D5.S3.Combinatorics.TraceAvoidingArrays} followed by the displayed
+module name. The shared
+\href{\leanbase TransferMatrix.lean}{\texttt{TransferMatrix.cardMatrix}}
+gives the finite local-constraint counting identity used by the first
+four modules.
+Corollary~\ref{cor:siblings} uses the written propagation proof and the
+finite integer identities specified here; the linked declarations cover
+widths two through six, not the three additional recurrences.
+The transposition, rationality and divisibility corollaries have written
+proofs above.
+
+\begingroup\small
+\begin{thebibliography}{12}
+\bibitem{riedel} Marko Riedel, answer to ``Recursive combinatorial solution
+for number of sequences of $\{0,1,2,3\}$,'' Mathematics Stack Exchange,
+\href{https://math.stackexchange.com/a/2070074}{answer 2070074},
+23 December 2016; \href{https://math.stackexchange.com/revisions/2070074/3}{revision 3},
+23:49 UTC, contains the four-state and two-state counting equations.
+\bibitem{howroyd} Andrew Howroyd, comment of 9 January 2025 in R.\ H.\
+Hardin's OEIS \href{https://oeis.org/A183774/internal}{A183774},
+comment field beginning ``Let b(n) and c(n)'': bottom-row counting
+equations. The entry's offset is zero.
+\bibitem{stanley} Richard P.\ Stanley, \emph{Enumerative Combinatorics},
+Volume 1, second-edition author version of 15 July 2011,
+\href{https://math.mit.edu/~rstan/ec/ec1.pdf}{Section 4.7, pp.\ 573--574},
+Theorems 4.7.1 and 4.7.2.
+\bibitem{oeis2} R.\ H.\ Hardin, OEIS \href{https://oeis.org/A185761}{A185761},
+name and formula fields, revision 8, 22 February 2018.
+Sequence entered 3 February 2011; generating function and closed-form
+conjectures by Colin Barker, 22 February 2018.
+\bibitem{oeis3} R.\ H.\ Hardin, OEIS \href{https://oeis.org/A185762}{A185762},
+name and formula fields, revision 9, 16 April 2018.
+Sequence entered 3 February 2011; generating function by Colin Barker,
+16 April 2018.
+\bibitem{oeis4} R.\ H.\ Hardin, OEIS \href{https://oeis.org/A185763}{A185763},
+name and formula fields, revision 9, 16 April 2018.
+Sequence entered 3 February 2011; generating function by Colin Barker,
+16 April 2018.
+\bibitem{oeis5} R.\ H.\ Hardin, OEIS \href{https://oeis.org/A185764}{A185764},
+name and formula fields, revision 10, 16 April 2018.
+Sequence entered 3 February 2011; generating function by Colin Barker,
+16 April 2018.
+\bibitem{oeis6} R.\ H.\ Hardin, OEIS \href{https://oeis.org/A185765}{A185765},
+name and formula fields, revision 9, 3 October 2025.
+Sequence entered 3 February 2011.
+\bibitem{oeis7} R.\ H.\ Hardin, OEIS \href{https://oeis.org/A185766}{A185766},
+name and formula fields, revision 9, 3 October 2025.
+Sequence entered 3 February 2011; empirical recurrence in formula field.
+\bibitem{oeis8} R.\ H.\ Hardin, OEIS \href{https://oeis.org/A185767}{A185767},
+name and formula fields, revision 9, 3 October 2025.
+Sequence entered 3 February 2011; empirical recurrence in formula field.
+\bibitem{oeis9} R.\ H.\ Hardin, OEIS \href{https://oeis.org/A185768}{A185768},
+name and formula fields, revision 9, 3 October 2025.
+Sequence entered 3 February 2011; empirical recurrence in formula field.
+\bibitem{oeistable} R.\ H.\ Hardin, OEIS
+\href{https://oeis.org/A185769}{A185769}, name and table, revision 9,
+3 October 2025. Sequence entered 3 February 2011.
+\end{thebibliography}
+\noindent\small Copyright 2026 Haobo Ma and Wenlin Zhang.
+Licensed under \href{https://creativecommons.org/licenses/by/4.0/}{Creative
+Commons Attribution 4.0 International (CC BY 4.0)}.
+\endgroup
+\end{document}

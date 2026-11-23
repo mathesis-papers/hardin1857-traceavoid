@@ -1,0 +1,16 @@
+Exact continuation identities: widths 2 through 9.
+For each width, every admissible ordered row pair is a state.
+width=2 states=16 edges=40 degree=2 shift=1 residual=0 recurrence_start=3
+width=3 states=40 edges=120 degree=3 shift=2 residual=0 recurrence_start=4
+width=4 states=104 edges=368 degree=5 shift=3 residual=0 recurrence_start=7
+width=5 states=264 edges=1128 degree=7 shift=3 residual=0 recurrence_start=10
+width=6 states=680 edges=3456 degree=9 shift=5 residual=0 recurrence_start=13
+width=7 states=1736 edges=10592 degree=14 shift=6 residual=0 recurrence_start=19
+width=8 states=4456 edges=32456 degree=19 shift=7 residual=0 recurrence_start=25
+width=9 states=11400 edges=99464 degree=30 shift=8 residual=0 recurrence_start=37
+Generating-function numerator identities: widths 2 through 9.
+Independent cell enumeration: widths 2 through 6 at heights 2 and 3; widths 7 through 9 at height 2.
+Scalar recurrence comparisons: through index 51 for every width.
+Width-two equitable quotient: all state classes and outgoing multiplicities.
+Transpose symmetry: all height/width pairs from 2 through 9.
+ALL_CHECKS_OK

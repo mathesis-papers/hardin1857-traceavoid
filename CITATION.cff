@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this work, cite it."
+title: "Hardin's trace-avoiding array recurrences and Barker's formulas: alternative proofs extending Riedel's and Howroyd's enumerations"
+authors:
+  - name: "Haobo Ma"
+  - name: "Wenlin Zhang"
+date-released: "2026-11-23"
+version: "3"
+url: "https://mathesis-omega-research.apps.chrono-ai.fun/papers/hardin1857-traceavoid?version=3"
+license: "CC-BY-4.0"

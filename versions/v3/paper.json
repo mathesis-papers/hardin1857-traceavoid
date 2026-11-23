@@ -1,0 +1,66 @@
+{
+  "files": {
+    "pdf": {
+      "bytes": 84507,
+      "matches_public": true,
+      "path": "paper.pdf",
+      "public_sha256": "a1f5105599ca4509a04d54d5e58283114a35c2bdd3f1bbba5ab9ab9df6574267",
+      "sha256": "a1f5105599ca4509a04d54d5e58283114a35c2bdd3f1bbba5ab9ab9df6574267"
+    },
+    "source": {
+      "bytes": 296500,
+      "matches_public": true,
+      "path": "source.archive",
+      "public_sha256": "1722796b8a8cdd1b0bff69f2980596dfed217a59b5809ae074212b663df7e852",
+      "sha256": "1722796b8a8cdd1b0bff69f2980596dfed217a59b5809ae074212b663df7e852"
+    }
+  },
+  "source_identity": "Mathesis public projection",
+  "work": {
+    "abstract_text": "We give alternative proofs and extensions for R. H. Hardin's empirical recurrences in the formula fields of OEIS A185761 (revision 8), A185762–A185763 (revision 9), A185764 (revision 10), and A185765–A185768 (revision 9), together with Colin Barker's formulas added on 22 February and 16 April 2018; the width-two case follows from Marko Riedel's 2016 word enumeration and Andrew Howroyd's 2025 array argument. These sequences count labeled binary arrays whose neighboring contiguous 2 by 2 blocks have different ordinary traces. A row-pair transfer construction reduces the assertions at widths two through nine to explicit finite integer identities; multiplying those identities by further transfer powers proves the recurrences at every length. It also gives rational generating functions at every fixed width and explains the transposition symmetry of the parent table A185769.",
+    "authors": [
+      {
+        "affiliation": "ChronoAI Pte Ltd, Singapore",
+        "name": "Haobo Ma"
+      },
+      {
+        "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore",
+        "name": "Wenlin Zhang"
+      }
+    ],
+    "concept_doi": null,
+    "current_version": 3,
+    "doi": null,
+    "lean_source": {
+      "revision": "1a461fb83236b7d5f88b0ffd1bde5f7d1e3ff8b4",
+      "url": "https://github.com/the-omega-institute/trureturing/blob/1a461fb83236b7d5f88b0ffd1bde5f7d1e3ff8b4/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA185761Recurrence.lean"
+    },
+    "license": "CC-BY-4.0",
+    "msc": [],
+    "pdf": {
+      "bytes": 84507,
+      "sha256": "a1f5105599ca4509a04d54d5e58283114a35c2bdd3f1bbba5ab9ab9df6574267",
+      "url": "/api/v1/collected-papers/hardin1857-traceavoid/files/pdf?version=3"
+    },
+    "previous_version": null,
+    "publication": "public",
+    "published_on": "2026-11-23T15:24:10.099702789Z",
+    "record": "hardin1857-traceavoid",
+    "repository_name": "hardin1857-traceavoid",
+    "source": {
+      "bytes": 296500,
+      "sha256": "1722796b8a8cdd1b0bff69f2980596dfed217a59b5809ae074212b663df7e852",
+      "url": "/api/v1/collected-papers/hardin1857-traceavoid/files/source?version=3"
+    },
+    "title": "Hardin's trace-avoiding array recurrences and Barker's formulas: alternative proofs extending Riedel's and Howroyd's enumerations",
+    "versions": [
+      {
+        "previous_version": null,
+        "published_on": "2026-11-23T15:24:10.099702789Z",
+        "revision": "3",
+        "version": 3
+      }
+    ],
+    "work": "hardin1857-traceavoid"
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "generated_paths": [
+    "CHANGELOG.md",
+    "CITATION.cff",
+    "CONTRIBUTING.md",
+    "LICENSES/CC-BY-4.0.txt",
+    "README.md",
+    "formalization/nodes.json",
+    "manuscript/hardin1857-traceavoid/LICENSE",
+    "manuscript/hardin1857-traceavoid/README.md",
+    "manuscript/hardin1857-traceavoid/certificate-sha256.txt",
+    "manuscript/hardin1857-traceavoid/certificates.json",
+    "manuscript/hardin1857-traceavoid/checker-output.txt",
+    "manuscript/hardin1857-traceavoid/metadata.json",
+    "manuscript/hardin1857-traceavoid/note.tex",
+    "manuscript/hardin1857-traceavoid/verify.py",
+    "paper.json",
+    "paper.pdf",
+    "source.archive"
+  ],
+  "generator_version": "0.1.0",
+  "sha256": {
+    "CHANGELOG.md": "7f32ac34d74350846d3b32c7cc188643a4036cec1ed7ff71b9e2dc2b19a9d6e8",
+    "CITATION.cff": "7e29872c49d774e43d3453bdca78c3bd7c3b965599e33720fd64bc688eb9f8e0",
+    "CONTRIBUTING.md": "fafd66e63160b2a88f433af56d2af2b0f7bf6ed2fd417d46b54446ce07c627ff",
+    "LICENSES/CC-BY-4.0.txt": "58230517b7895aa219ff46a6ed63e67057a1582fb9ea054b16728a8c13525650",
+    "README.md": "ddc1269d43ec454c52106a2a41c106a9014bd469cb98b31dc66d6310da5ec1d2",
+    "formalization/nodes.json": "69280e4fc5b346a46cc78e4f9c6f3aa3b517a255371662be568277b065cdd721",
+    "manuscript/hardin1857-traceavoid/LICENSE": "316ddbaa69ddb860acf2e1c8d4c20610dc52b8cff130cf3140a0f050e2201441",
+    "manuscript/hardin1857-traceavoid/README.md": "1894b836a0b8e11c8d2fb9f656a81d2172f807fb9eaabe9b63b0ddc86cbdffc3",
+    "manuscript/hardin1857-traceavoid/certificate-sha256.txt": "943efb5e407a371a7561b2314d036451cb35bed67728176ddc2f51c030d94f13",
+    "manuscript/hardin1857-traceavoid/certificates.json": "91056ab2c17014412ad974600a6552dbb8d9599ccdef029ad27e64ff30aedf34",
+    "manuscript/hardin1857-traceavoid/checker-output.txt": "fb180cdf12bd9649766b9840421880f312ea5dba7631df7e8e1fd1f7345f86bc",
+    "manuscript/hardin1857-traceavoid/metadata.json": "e2f007c308cb34e4c8e626e6fffeec5ecdf086999ee7608c29dfecb6302c4d72",
+    "manuscript/hardin1857-traceavoid/note.tex": "2838a7a35b48dbf674852ca258fcda8d5349730fb51b7aadb15eda3394945bf5",
+    "manuscript/hardin1857-traceavoid/verify.py": "5f4e66424179176a90d76ef67dc08421fca62b0da262ea452a670d3f3083cd7f",
+    "paper.json": "c179f302eadd217321085043178d697f189f51567f7aec74a39b708bbd1884b0",
+    "paper.pdf": "a1f5105599ca4509a04d54d5e58283114a35c2bdd3f1bbba5ab9ab9df6574267",
+    "source.archive": "1722796b8a8cdd1b0bff69f2980596dfed217a59b5809ae074212b663df7e852"
+  },
+  "snapshot_identity": "1bf05c077974652eb11139ba435f85003ad875bcfb9cc33b1215806689ba7985"
+}

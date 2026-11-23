@@ -1,0 +1,15 @@
+{
+  "id": "hardin1857-traceavoid",
+  "revision": 3,
+  "problem_ids": ["hardin1857-traceavoid", "hardin185765"],
+  "topic": "Hardin's recurrences and Barker's formulas for trace-avoiding binary arrays",
+  "title": "Hardin's trace-avoiding array recurrences and Barker's formulas: alternative proofs extending Riedel's and Howroyd's enumerations",
+  "creators": [
+    {"name": "Haobo Ma", "affiliation": "ChronoAI Pte Ltd, Singapore"},
+    {"name": "Wenlin Zhang", "affiliation": "National University of Singapore; ChronoAI Pte Ltd, Singapore"}
+  ],
+  "abstract": "We give alternative proofs and extensions for R. H. Hardin's empirical recurrences in the formula fields of OEIS A185761 (revision 8), A185762–A185763 (revision 9), A185764 (revision 10), and A185765–A185768 (revision 9), together with Colin Barker's formulas added on 22 February and 16 April 2018; the width-two case follows from Marko Riedel's 2016 word enumeration and Andrew Howroyd's 2025 array argument. These sequences count labeled binary arrays whose neighboring contiguous 2 by 2 blocks have different ordinary traces. A row-pair transfer construction reduces the assertions at widths two through nine to explicit finite integer identities; multiplying those identities by further transfer powers proves the recurrences at every length. It also gives rational generating functions at every fixed width and explains the transposition symmetry of the parent table A185769.",
+  "summary": "Exact row-pair continuation identities prove all eight recurrences in OEIS A185761–A185768, including the stated width-seven, width-eight and width-nine thresholds. Riedel's 2016 forbidden-word argument and Howroyd's 2025 array argument are credited in chronological order, with explicit encodings giving a_2(n)=4*b(n)=8*A183774(n-1). The uniform alternative proofs include Barker's four generating functions and closed form, a width-six generating function, exact rational generating-function data for widths seven through nine, transposition symmetry, fixed-width rationality and divisibility by eight. The pinned Lean declarations cover widths two through six; the additional recurrences use written propagation proofs and exact finite identities.",
+  "license": "cc-by-4.0",
+  "evidence_url": "https://github.com/the-omega-institute/trureturing/blob/1a461fb83236b7d5f88b0ffd1bde5f7d1e3ff8b4/D5/S3/Combinatorics/TraceAvoidingArrays/HardinA185761Recurrence.lean"
+}
