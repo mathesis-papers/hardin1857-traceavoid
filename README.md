@@ -5,13 +5,15 @@
 We give alternative proofs and extensions for R. H. Hardin's empirical recurrences in the formula fields of OEIS A185761 (revision 8), A185762–A185763 (revision 9), A185764 (revision 10), and A185765–A185768 (revision 9), together with Colin Barker's formulas added on 22 February and 16 April 2018; the width-two case follows from Marko Riedel's 2016 word enumeration and Andrew Howroyd's 2025 array argument. These sequences count labeled binary arrays whose neighboring contiguous 2 by 2 blocks have different ordinary traces. A row-pair transfer construction reduces the assertions at widths two through nine to explicit finite integer identities; multiplying those identities by further transfer powers proves the recurrences at every length. It also gives rational generating functions at every fixed width and explains the transposition symmetry of the parent table A185769.
 
 - PDF: [frozen public file](paper.pdf)
+- DOI: [https://doi.org/10.5281/zenodo.24411970](https://doi.org/10.5281/zenodo.24411970)
+- Concept DOI: [https://doi.org/10.5281/zenodo.24411969](https://doi.org/10.5281/zenodo.24411969)
 - License: CC-BY-4.0
 - Version: 3
 - Mathesis record: [hardin1857-traceavoid](https://mathesis-omega-research.apps.chrono-ai.fun/papers/hardin1857-traceavoid?version=3)
 
 ## How to cite
 
-Haobo Ma, Wenlin Zhang (2026). Hardin's trace-avoiding array recurrences and Barker's formulas: alternative proofs extending Riedel's and Howroyd's enumerations. Mathesis, version 3. https://mathesis-omega-research.apps.chrono-ai.fun/papers/hardin1857-traceavoid?version=3
+Haobo Ma, Wenlin Zhang (2026). Hardin's trace-avoiding array recurrences and Barker's formulas: alternative proofs extending Riedel's and Howroyd's enumerations. Mathesis, version 3. https://doi.org/10.5281/zenodo.24411970
 
 ## Statement progress
 
